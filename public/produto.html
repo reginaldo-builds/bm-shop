@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produto - BM Sistemas</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <a href="index.html">BM Sistemas</a>
+            </div>
+            
+            <nav class="desktop-nav">
+                <a href="index.html">Início</a>
+                <a href="index.html#produtos">Produtos</a>
+                <a href="#">Contato</a>
+            </nav>
+
+            <div class="header-actions">
+                <a href="login.html" class="btn-secondary">Entrar</a>
+                <a href="carrinho.html" class="cart-link">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <span class="cart-badge" id="cartBadge">0</span>
+                </a>
+                <button class="menu-toggle" id="menuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="sidebar" id="sidebar">
+        <button class="close-sidebar" id="closeSidebar">&times;</button>
+        <nav>
+            <a href="index.html">Início</a>
+            <a href="index.html#produtos">Produtos</a>
+            <a href="#">Contato</a>
+            <a href="login.html">Entrar</a>
+        </nav>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+
+    <main class="product-detail-page">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Início</a> / 
+                <a href="index.html#produtos">Produtos</a> / 
+                <span id="breadcrumbProduct">Carregando...</span>
+            </div>
+
+            <div class="product-detail" id="productDetail">
+                <div class="loading">Carregando produto...</div>
+            </div>
+
+            <section class="related-products" id="relatedProducts" style="display: none;">
+                <h2>Produtos Relacionados</h2>
+                <div class="products-grid" id="relatedGrid"></div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>BM Sistemas</h3>
+                    <p>Sua loja de tecnologia com os melhores produtos e preços.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Links Rápidos</h3>
+                    <a href="index.html">Início</a>
+                    <a href="index.html#produtos">Produtos</a>
+                    <a href="#">Sobre</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Contato</h3>
+                    <p>Email: contato@bmsistemas.com</p>
+                    <p>Tel: (11) 9999-9999</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 BM Sistemas. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="toast" class="toast"></div>
+    
+    <script src="js/main.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/product-detail.js"></script>
+</body>
+</html>
