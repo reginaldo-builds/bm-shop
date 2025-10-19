@@ -1,10 +1,7 @@
 <?php
-// Atualizar produto existente (requer autenticação de admin)
+// Atualizar produto existente
 include_once '../config/cors.php';
-include_once '../config/auth.php';
-
-$auth = new Auth();
-$auth->requireAdmin();
+include_once '../config/database.php';
 
 $database = new Database();
 $db = $database->getConnection();

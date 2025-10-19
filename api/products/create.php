@@ -1,10 +1,7 @@
 <?php
-// Criar novo produto (requer autenticação de admin)
+// Criar novo produto
 include_once '../config/cors.php';
-include_once '../config/auth.php';
-
-$auth = new Auth();
-$auth->requireAdmin();
+include_once '../config/database.php';
 
 $database = new Database();
 $db = $database->getConnection();

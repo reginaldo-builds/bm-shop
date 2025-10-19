@@ -1,10 +1,6 @@
 <?php
-// Criar nova categoria (requer autenticação de admin)
 include_once '../config/cors.php';
-include_once '../config/auth.php';
-
-$auth = new Auth();
-$auth->requireAdmin();
+include_once '../config/database.php';
 
 $database = new Database();
 $db = $database->getConnection();
