@@ -335,6 +335,26 @@
 
     <script src="js/cart.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/admin-auth.js"></script>
     <script src="js/admin.js"></script>
+    <script>
+        // Verificar autenticação
+        if (!authManager.isAuthenticated() || !authManager.isAdmin()) {
+            window.location.href = '/public/login.html';
+        }
+        
+        // Adicionar botão de logout
+        document.addEventListener('DOMContentLoaded', () => {
+            const userInfo = document.createElement('div');
+            userInfo.className = 'user-info';
+            userInfo.style.cssText = 'position: fixed; top: 20px; right: 20px; background: white; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); z-index: 1000;';
+            userInfo.innerHTML = `
+                <span style="margin-right: 10px;">${authManager.getUser().name}</span>
+                <button onclick="authManager.logout()" style="background: #dc3545; color: white; border: none; padding: 5px 15px; border-radius: 3px; cursor: pointer;">Sair</button>
+            `;
+            document.body.appendChild(userInfo);
+        });
+    </script>
 </body>
 </html>

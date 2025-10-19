@@ -91,7 +91,17 @@
 
     <script src="js/cart.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
     <script>
+        // Verificar se já está logado
+        if (authManager.isAuthenticated()) {
+            if (authManager.isAdmin()) {
+                window.location.href = 'admin.html';
+            } else {
+                window.location.href = 'index.html';
+            }
+        }
+
         // Login form handler
         document.getElementById('loginForm').addEventListener('submit', async function(e) {
             e.preventDefault();
@@ -103,19 +113,22 @@
             btn.textContent = 'Entrando...';
             btn.disabled = true;
             
-            // Simulação de chamada à API - Integrar com PHP
-            setTimeout(() => {
-                if (email && password) {
-                    showToast('Login realizado com sucesso!', 'success');
-                    setTimeout(() => {
+            const result = await authManager.login(email, password);
+            
+            if (result.success) {
+                showToast('Login realizado com sucesso!', 'success');
+                setTimeout(() => {
+                    if (result.user.is_admin === 1) {
+                        window.location.href = 'admin.html';
+                    } else {
                         window.location.href = 'index.html';
-                    }, 1000);
-                } else {
-                    showToast('Por favor, preencha todos os campos', 'error');
-                    btn.textContent = 'Entrar';
-                    btn.disabled = false;
-                }
-            }, 1000);
+                    }
+                }, 1000);
+            } else {
+                showToast(result.message || 'Erro ao fazer login', 'error');
+                btn.textContent = 'Entrar';
+                btn.disabled = false;
+            }
         });
     </script>
 </body>

@@ -1,11 +1,16 @@
 // Admin CRM - Gerenciamento completo
-const API_URL = 'http://localhost:8000/api';
+const API_URL = '/api';
 let adminProducts = [];
 let categories = [];
 let orders = [];
 let users = [];
 let editingId = null;
 let productImages = [];
+
+// Função auxiliar para fazer requisições autenticadas
+async function apiFetch(url, options = {}) {
+    return await authManager.fetch(url, options);
+}
 
 // Navegação entre tabs
 document.querySelectorAll('.tab-btn').forEach(btn => {
@@ -31,7 +36,7 @@ function switchTab(tab) {
 // Dashboard
 async function loadDashboard() {
     try {
-        const response = await fetch(`${API_URL}/stats/dashboard.php`);
+        const response = await apiFetch(`${API_URL}/stats/dashboard.php`);
         const stats = await response.json();
         
         document.getElementById('totalProducts').textContent = stats.total_products;
